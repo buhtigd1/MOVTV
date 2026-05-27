@@ -2,7 +2,7 @@ name: Movies M3U Auto Update
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '7 */2 * * *'   # avoid 0-minute congestion
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,9 @@ jobs:
         run: pip install requests
 
       - name: Run script
-        run: python provider.py
+        run: |
+          echo "Running at: $(date -u)"
+          python provider.py
 
       - name: Commit changes
         run: |
@@ -31,6 +33,6 @@ jobs:
 
           git add movies.m3u
 
-          git diff --cached --quiet || git commit -m "Update $(date -u +'%a %b %d %T UTC %Y')"
+          git diff --cached --quiet || git commit -m "Update $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
 
           git push
