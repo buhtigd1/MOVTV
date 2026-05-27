@@ -47,10 +47,13 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
         for block in movies:
-            for line in block:
+            for idx, line in enumerate(block):
+                # ✅ remove group-title from EXTINF only
+                if idx == 0 and line.startswith("#EXTINF"):
+                    line = re.sub(r'\s*group-title="[^"]+"', '', line)
                 f.write(line + "\n")
 
-    print(f"Saved {len(movies)} movie channels with header")
+    print(f"Saved {len(movies)} movie channels WITHOUT group-title")
 
 if __name__ == "__main__":
     main()
