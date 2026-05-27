@@ -1,59 +1,59 @@
-#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" refresh="720"
-#EXTINF:-1 tvg-id="CelestialClassicMovies.id@SD" tvg-logo="https://www.visionplus.id/images/repository/613/613-LOGO-m.png",CCM
+#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/613/613-LOGO-m.png",CCM
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=974d4fb195224f66a2271de806e62018:0e92ec1a28d59da80161c3541c6eb8eb
 https://d84q7nw4qf3j3.cloudfront.net/out/v1/6bdbe6ce7f034807aba5f09bed048b05/index.mpd
-#EXTINF:-1 tvg-id="CelestialMoviesIndonesia.id@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_celestialmovies.png",Celestial Movies
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_celestialmovies.png",Celestial Movies
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=de4a383599bb4ec4a24f8c61f2b9a3ba:5166677d7f6797bcf459cf7c8b66dcb9
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/fd25e662b7154c60a94f7c061573ba2d/index.mpd
-#EXTINF:-1 tvg-id="Galaxy.id@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_galaxy.png",Galaxy
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_galaxy.png",Galaxy
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=cfbae59795044563b5b9b4927a79a76e:ce57c9490bd772b390d78b9fedaf8d36
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/751a0982779f4edd904205eb351e220d/index.mpd
-#EXTINF:-1 tvg-id="GalaxyPremium.id@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_galaxypremium.png",Galaxy Premium
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_galaxypremium.png",Galaxy Premium
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=0d9539db24004da9ac36ea49a09e255c:30304533b5008ad7f33c25f225506bc0
 https://d84q7nw4qf3j3.cloudfront.net/out/v1/45c0752c6b6b4397b80243ac9fed96fd/index.mpd
-#EXTINF:-1 tvg-id="HitsMoviesAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_hitsmovies.png",HITS Movies
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_hitsmovies.png" tvg-id="HitsMoviesAsia.sg@SD",HITS Movies
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=07af9ce05d8f4960a1b9113e7fdb8e7e:12b66b374d9c804f7311cb6a8d421c8c
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/de93893d01e6446daaf052a7fec694fc/index.mpd
-#EXTINF:-1 tvg-id="HitsMoviesAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_hitsmovies.png",HITS Movies
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_hitsmovies.png" tvg-id="HitsMoviesAsia.sg@SD",HITS Movies
 https://cdnbal1.indihometv.com/atm/DASH/hitsmovie/hitsmovie-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="IMC.id@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_imc.png",IMC
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_imc.png",IMC
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=a04c73e95eeb411dabcba8c35a5a58e8:3f9195dc468d3372f69c6bec5bfa75bb
 https://d3b0v7fggu5zwm.cloudfront.net/out/v1/65432a4c12ca4a52abf473a0e41d7c7e/index.mpd
-#EXTINF:-1 tvg-id="MyCinemaEurope.ch@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/My_Cinema_Europe_HD_1.jpg",My Cinema Europe
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/My_Cinema_Europe_HD_1.jpg",My Cinema Europe
 #EXTVLCOPT:http-user-agent=Mozilla/5.0
 https://op-group1-swiftservehd-1.dens.tv/h/h18/index.m3u8
-#EXTINF:-1 tvg-id="RockActionAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_rockaction.png",ROCK Action
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_rockaction.png" tvg-id="RockActionAsia.sg@SD",ROCK Action
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=d4126f7fd6134adfbedb3a0daefd7657:920f1adcca60069c887da7f1d225607d
 https://d84q7nw4qf3j3.cloudfront.net/out/v1/010bb28c19b64975b318d3b00f58b18b/index.mpd
-#EXTINF:-1 tvg-id="RockActionAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_rockaction.png",ROCK Action
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_rockaction.png" tvg-id="RockActionAsia.sg@SD",ROCK Action
 https://cdnbal1.indihometv.com/atm/DASH/ROCK_ACTION/ROCK_ACTION-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="StudioUniversalLatinAmerica.us@Brazil" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_studiouniversal.png",Studio Universal
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_studiouniversal.png",Studio Universal
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=b4a7b3289eff493d8700becf2e2a1157:bfbcfcb8137dd565a7f4b5ce7800c1f0
 https://d84q7nw4qf3j3.cloudfront.net/out/v1/dc63bd198bc44193b570e0567ff5b22c/index.mpd
-#EXTINF:-1 tvg-id="Thrill.hk@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_thrill.png",Thrill
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_thrill.png",Thrill
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=3ffab3471a994535bdf7fc663792f08b:6e82876474df025c39ae804ba738ff17
 https://d2tjypxxy769fn.cloudfront.net/out/v1/3c619ecc120b46e999d1eaa627cc544f/index.mpd
-#EXTINF:-1 tvg-id="Thrill.hk@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_thrill.png",Thrill
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_thrill.png",Thrill
 https://cdnbal1.indihometv.com/atm/DASH/thrill/thrill-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="tvNMoviesAsia.hk@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_tvnmovies.png",tvN Movies
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_tvnmovies.png",tvN Movies
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=17fb563c784848f09d8a1ea88a2fa989:1d0bd94eab5d5f56a950b784d9345439
@@ -61,198 +61,192 @@ https://d2tjypxxy769fn.cloudfront.net/out/v1/096d5cf064294e7ea3a7f59ee2899669/in
 #EXTINF:-1 tvg-logo="https://pic.dens.tv/tv_183x174/wedo-tv-movies183x174@3x.jpg",WeDoTv Movies
 #EXTVLCOPT:http-user-agent=Mozilla/5.0
 https://op-group1-swiftservehd-1.dens.tv/h/h70/wedotv_movie.m3u8
-#EXTINF:-1 tvg-id="ZeeBioskop.id@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_zeebioskop.png",Zee Bioskop
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_zeebioskop.png",Zee Bioskop
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=398ef14ec7014ad8ae75414a7efd2a0f:99a6225691aa669f0f22677b4536705e
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/81cb1af2ea4d4842a94f1c83957b4cd2/index.mpd
-#EXTINF:-1 tvg-id="ZeeBioskop.id@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_zeebioskop.png",Zee Bioskop
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_zeebioskop.png",Zee Bioskop
 https://cdnbal1.indihometv.com/atm/DASH/zbioskop/zbioskop-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="CinemachiKids.uk@SD" tvg-logo="https://www.visionplus.id/images/repository/392/273392-LOGO-m.png",Buddy Star
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/392/273392-LOGO-m.png",Buddy Star
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=2bfc3e059a9f4176b835a15c9a0c0dac:265c00f7fd825ad3e092b56081953b60
 https://d84q7nw4qf3j3.cloudfront.net/out/v1/c70975aaa68d47f2a38799e6730a7816/index.mpd
-#EXTINF:-1 tvg-id="CinemachiAction.uk@SD" tvg-logo="https://www.visionplus.id/images/repository/376/273376-LOGO-m.png",Cineedge
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/376/273376-LOGO-m.png",Cineedge
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=c7b3852d9c84418f942923e41c31e633:ddb99755e0bebd98c92c7eab974bf161
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/47c895ca72544fcfa4221c499b555a10/index.mpd
-#EXTINF:-1 tvg-id="Cinemachi.uk@SD" tvg-logo="https://www.visionplus.id/images/repository/360/273360-LOGO-m.png",Originals
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/360/273360-LOGO-m.png",Originals
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=33333f38930949b1af65b3361ad80d1d:b159847f9af0500738b01e91cf023e30
 https://d3b0v7fggu5zwm.cloudfront.net/out/v1/e992e986a88346c18a5dcc4fbcdae6b9/index.mpd
-#EXTINF:-1 tvg-id="CinemachiMax.uk@SD" tvg-logo="https://www.visionplus.id/images/repository/394/273394-LOGO-m.png",Superrix
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/394/273394-LOGO-m.png",Superrix
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=1dc30f49888c4652897d9c998aa2cac1:8ccb6857157c1a01c5a47eb853f51aa2
 https://d2tjypxxy769fn.cloudfront.net/out/v1/782400332c96440598260730a864bc6f/index.mpd
-#EXTINF:-1 tvg-id="CinemachiXtra.uk@SD" tvg-logo="https://www.visionplus.id/images/repository/397/273397-LOGO-m.png",Uniques
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/397/273397-LOGO-m.png",Uniques
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=5a6668f3a5d64338bce13307e5c570be:d0c76237c5ee38e7a420e9c83323023e
 https://d3b0v7fggu5zwm.cloudfront.net/out/v1/bde0a6d8d3fd4d77ae5093ad2e6699dc/index.mpd
-#EXTINF:-1 tvg-id="CinemaxAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_Cinemax-180x180_2025_11_05_13_11_15.jpg",CINEMAX
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_Cinemax-180x180_2025_11_05_13_11_15.jpg" tvg-id="CinemaxAsia.sg@SD",CINEMAX
 https://cdnbal1.indihometv.com/atm/DASH/cinemax/cinemax-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="HBOAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-180x180_2025_11_05_11_21_29.jpg",HBO
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-180x180_2025_11_05_11_21_29.jpg" tvg-id="HBOAsia.sg@SD",HBO
 https://cdnbal1.indihometv.com/atm/DASH/hbo/hbo-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="HBOFamilyAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-Familly-180x180_2025_11_05_11_14_46.jpg",HBO Family
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-Familly-180x180_2025_11_05_11_14_46.jpg" tvg-id="HBOFamilyAsia.sg@SD",HBO Family
 https://cdnbal1.indihometv.com/atm/DASH/hbofamily/hbofamily-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="HBOHitsAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-Hits-180x180_2025_11_05_11_23_20.jpg",HBO Hits
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-Hits-180x180_2025_11_05_11_23_20.jpg" tvg-id="HBOHitsAsia.sg@SD",HBO Hits
 https://cdnbal1.indihometv.com/atm/DASH/hbohits/hbohits-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="HBOSignatureAsia.sg@SD" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-Signature-180x180_2025_11_05_12_57_49.jpg",HBO Signature
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/imageCir_HBO-Signature-180x180_2025_11_05_12_57_49.jpg" tvg-id="HBOSignatureAsia.sg@SD",HBO Signature
 https://cdnbal1.indihometv.com/atm/DASH/hbosignature/hbosignature-avc1_2500000=7-3277707030000000.mpd
-#EXTINF:-1 tvg-id="TapMoviesAsia.sg@SD" tvg-id="" tvg-logo="https://i.imgur.com/3RVA5mV.png", Tap Movies 
+#EXTINF:-1 tvg-logo="https://i.imgur.com/3RVA5mV.png" tvg-id="TapMoviesAsia.sg@SD",Tap Movies
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=71cbdf02b595468bb77398222e1ade09:c3f2aa420b8908ab8761571c01899460
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_tapmovies_hd1/default/index.mpd
-#EXTINF:-1 tvg-id="HBOAsia.sg@SD" tvg-id="" tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122", HBO
+#EXTINF:-1 tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122" tvg-id="HBOAsia.sg@SD",HBO
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=c2b7a1e95d4f4c3a8e617f9d0a2b6c18:27fca1ab042998b0c2f058b0764d7ed4
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbohd/default/index.mpd
-#EXTINF:-1 tvg-id="HBOHitsAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png", HBO Hits
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png" tvg-id="HBOHitsAsia.sg@SD",HBO Hits
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=b04ae8017b5b4601a5a0c9060f6d5b7d:a8795f3bdb8a4778b7e888ee484cc7a1
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbohits/default/index.mpd
-#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/cgfKSDP.png", DreamWorks (Tagalized)
-#KODIPROP:inputstreamaddon=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=dash
-#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=564b3b1c781043c19242c66e348699c5:d3ad27d7fe1f14fb1a2cd5688549fbab
-https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_dreamworktag/default/index.mpd
-#EXTINF:-1 tvg-id="RockActionAsia.sg@SD" tvg-id="" tvg-logo="https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png?fbclid=IwY2xjawGIHF9leHRuA2FlbQIxMAABHaW0_Y0A9XL4w1ZXDSwAZCAxe62ui1Oy3gU5wjykfHsZ0eCjzNxl05M0JQ_aem_NIH5vZtTty4_B8wy5fB2LA", Rock Action
+#EXTINF:-1 tvg-logo="https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png?fbclid=IwY2xjawGIHF9leHRuA2FlbQIxMAABHaW0_Y0A9XL4w1ZXDSwAZCAxe62ui1Oy3gU5wjykfHsZ0eCjzNxl05M0JQ_aem_NIH5vZtTty4_B8wy5fB2LA" tvg-id="RockActionAsia.sg@SD",Rock Action
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=0f852fb8412b11edb8780242ac120002:4cbc004d8c444f9f996db42059ce8178
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/dr_rockextreme/default/index.mpd
-#EXTINF:-1 tvg-id="HBOSignatureAsia.sg@SD" tvg-id="" tvg-logo="https://i.imgur.com/t4HF5va.png", HBO Signature
+#EXTINF:-1 tvg-logo="https://i.imgur.com/t4HF5va.png" tvg-id="HBOSignatureAsia.sg@SD",HBO Signature
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=a06ca6c275744151895762e0346380f5:559da1b63eec77b5a942018f14d3f56f
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbosign/default/index.mpd
-#EXTINF:-1 tvg-id="WarnerTVAsia.sg@SD" tvg-id="" tvg-logo="https://i.imgur.com/vGEL2Ne.png",Warner TV 
+#EXTINF:-1 tvg-logo="https://i.imgur.com/vGEL2Ne.png" tvg-id="WarnerTVAsia.sg@SD",Warner TV
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=4503cf86bca3494ab95a77ed913619a0:afc9c8f627fb3fb255dee8e3b0fe1d71
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_warnerhd/default/index.mpd
-#EXTINF:-1 tvg-id="HBOFamilyAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png",HBO Family
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png" tvg-id="HBOFamilyAsia.sg@SD",HBO Family
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=872910c843294319800d85f9a0940607:f79fd895b79c590708cf5e8b5c6263be
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbofam/default/index.mpd
-#EXTINF:-1 tvg-id="RockEntertainmentAsia.sg@SD" tvg-id="" tvg-logo="https://cdn.prod.website-files.com/67ad5259c6e804a40b4bae92/67ad5259c6e804a40b4bb0c1_logo_ent_red_web.png",Rock Entertainment
+#EXTINF:-1 tvg-logo="https://cdn.prod.website-files.com/67ad5259c6e804a40b4bae92/67ad5259c6e804a40b4bb0c1_logo_ent_red_web.png" tvg-id="RockEntertainmentAsia.sg@SD",Rock Entertainment
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=e4ee0cf8ca9746f99af402ca6eed8dc7:be2a096403346bc1d0bb0f812822bb62
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/dr_rockentertainment/default/index.mpd
-#EXTINF:-1 tvg-id="CinemaxAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png",Cinemax
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png" tvg-id="CinemaxAsia.sg@SD",Cinemax
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=b207c44332844523a3a3b0469e5652d7:fe71aea346db08f8c6fbf0592209f955
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_cinemax/default/index.mpd
-#EXTINF:-1 tvg-id="AXNAsia.sg@SD" tvg-id="" tvg-logo="http://linear-poster.astro.com.my/prod/logo/AXN_v1.png", AXN
+#EXTINF:-1 tvg-logo="http://linear-poster.astro.com.my/prod/logo/AXN_v1.png" tvg-id="AXNAsia.sg@SD",AXN
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=8a6c2f1e9d7b4c5aa1f04d2b7e9c1f88:05e6bfa4b6805c46b772f35326b26b36
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_axn_sd/default/index.mpd
-#EXTINF:-1 tvg-id="dreamworks_hd" tvg-logo="https://i.imgur.com/cgfKSDP.png",DreamWorks
+#EXTINF:-1 tvg-logo="https://i.imgur.com/cgfKSDP.png" tvg-id="DreamWorksAsia.sg@SD",DreamWorks
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=7b1e9c4d5a2f4d8c9f106d3a8b2c1e77:8b2904224c6cee13d2d4e06c0a3b2887
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_dreamworks_hd1/default/index.mpd
-#EXTINF:-1 tvg-id="HitsNowAsia.sg@SD" tvg-logo="https://aqfadtv.xyz/logos/HITSNow.png",HITS Now
+#EXTINF:-1 tvg-logo="https://aqfadtv.xyz/logos/HITSNow.png" tvg-id="HitsNowAsia.sg@SD",HITS Now
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=f9c3d6b18a2e4d7f9e453b1a8c6d2f70:ce8874347ec428c624558dcdc3575dd4
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hitsnow/default/index.mpd
-#EXTINF:-1 tvg-id="HitsMoviesAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/391_144.png",HITS Movies
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/391_144.png" tvg-id="HitsMoviesAsia.sg@SD",HITS Movies
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=f56b57b32d7e4b2cb21748c0b56761a7:3df06a89aa01b32655a77d93e09e266f
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/hitsmovies/default/index.mpd
-#EXTINF:-1 tvg-id="HitsAsia.sg@SD" tvg-logo="https://i.imgur.com/YeqyD9W.png", Hits HD
+#EXTINF:-1 tvg-logo="https://i.imgur.com/YeqyD9W.png" tvg-id="HitsAsia.sg@SD",Hits HD
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=6d2f8a1c9b5e4c7da1f03e7b9d6c2a55:37c9835795779f8d848a6119d3270c69
 https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/hits_hd1/default/index.mpd
-#EXTINF:-1 tvg-id="HBOAsia.sg@SD" tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122", HBO
+#EXTINF:-1 tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122" tvg-id="HBOAsia.sg@SD",HBO
 http://136.239.158.10:6610/001/2/ch00000090990000001065/manifest.mpd?AuthInfo=v87HD9rEhwHiAdYyrP20Tg5pgSMSITY%2FHYvvCWJRp%2BosKg8aLji3LHWqHUI%2FwQyJytokK1MIobcue1ImXa0ZEA%3D%3D&version=v1.0&BreakPoint=0&virtualDomain=001.live_hls.zte.com&programid=ch00000000000000001085&contentid=ch00000000000000001085&videoid=ch00000090990000001065&recommendtype=0&userid=1362658369654&boid=001&stbid=02%3A00%3A00%3A00%3A00%3A00&terminalflag=1&profilecode=&usersessionid=UVJL5F87UVBXXX&NeedJITP=1&JITPMediaType=DASH&JITPDRMType=NO
-#EXTINF:-1 tvg-id="WarnerTVAsia.sg@SD" tvg-logo="https://i.imgur.com/vGEL2Ne.png", Warner TV
+#EXTINF:-1 tvg-logo="https://i.imgur.com/vGEL2Ne.png" tvg-id="WarnerTVAsia.sg@SD",Warner TV
 http://136.239.158.18:6610/001/2/ch00000090990000001096/manifest.mpd?AuthInfo=v87HD9rEhwHiAdYyrP20Tg5pgSMSITY%2FHYvvCWJRp%2BqRhIO4pq%2FZNG%2BJhjsEpHHCytokK1MIobcue1ImXa0ZEA%3D%3D&version=v1.0&BreakPoint=0&virtualDomain=001.live_hls.zte.com&programid=ch00000000000000001219&contentid=ch00000000000000001219&videoid=ch00000090990000001096&recommendtype=0&userid=1321207134399&boid=001&stbid=02%3A00%3A00%3A00%3A00%3A00&terminalflag=1&profilecode=&usersessionid=0QVRZ4LBHCCXXX&NeedJITP=1&JITPMediaType=DASH&JITPDRMType=NO
-#EXTINF:-1 tvg-id="CinemaxAsia.sg@SD" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png", Cinemax
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png" tvg-id="CinemaxAsia.sg@SD",Cinemax
 http://136.239.173.10:6610/001/2/ch00000090990000001108/manifest.mpd?AuthInfo=v87HD9rEhwHiAdYyrP20Tg5pgSMSITY%2FHYvvCWJRp%2BoD7Jkv0l3sE1jz6821dGRWytokK1MIobcue1ImXa0ZEA%3D%3D&version=v1.0&BreakPoint=0&virtualDomain=001.live_hls.zte.com&programid=ch00000000000000001233&contentid=ch00000000000000001233&videoid=ch00000090990000001108&recommendtype=0&userid=1349825919509&boid=001&stbid=02%3A00%3A00%3A00%3A00%3A00&terminalflag=1&profilecode=&usersessionid=LAO494UQ9QXXXX&NeedJITP=1&JITPMediaType=DASH&JITPDRMType=NO
-#EXTINF:-1 tvg-id="TapMoviesAsia.sg@SD" tvg-logo="https://i.imgur.com/3RVA5mV.png", Tap Movies
+#EXTINF:-1 tvg-logo="https://i.imgur.com/3RVA5mV.png" tvg-id="TapMoviesAsia.sg@SD",Tap Movies
 http://136.239.159.20:6610/001/2/ch00000090990000001304/manifest.mpd?AuthInfo=v87HD9rEhwHiAdYyrP20Tg5pgSMSITY%2FHYvvCWJRp%2BrqmX9tLke4aZIpUgreyOpNytokK1MIobcue1ImXa0ZEA%3D%3D&version=v1.0&BreakPoint=0&virtualDomain=001.live_hls.zte.com&programid=ch00000000000000001774&contentid=ch00000000000000001774&videoid=ch00000090990000001304&recommendtype=0&userid=1621837627360&boid=001&stbid=02%3A00%3A00%3A00%3A00%3A00&terminalflag=1&profilecode=&usersessionid=DE8LQ2K74YXXXX&NeedJITP=1&JITPMediaType=DASH&JITPDRMType=NO
-#EXTINF:-1 tvg-id="HBOAsia.sg@SD" tvg-id="" tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122" ,HBO
+#EXTINF:-1 tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122" tvg-id="HBOAsia.sg@SD",HBO
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=a098896d2b11c5f3906a993c3ba5c610:f3f842c54cc96cbbd0bcb96a4cb8a813
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/2304/default_primary.mpd
-#EXTINF:-1 tvg-id="CinemaxAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png" ,Cinemax
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png" tvg-id="CinemaxAsia.sg@SD",Cinemax
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=efdb2a8d39151cc39f4b51d762cf9c10:13cc535ad4a73201147863cac386cdd3
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/603/default_primary.mpd
-#EXTINF:-1 tvg-id="HBOFamilyAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png" ,HBO Family
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png" tvg-id="HBOFamilyAsia.sg@SD",HBO Family
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=2b9ff7cc1a3dc9fef47cc5773472d510:7e37588e893ab9252e505bd6dda35beb
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/5053/default_primary.mpd
-#EXTINF:-1 tvg-id="HBOHitsAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png" ,HBO Hits
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png" tvg-id="HBOHitsAsia.sg@SD",HBO Hits
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=5d600eb70944d681c26c1f48fbe61f10:796139ba05a2ab425f978c7fd98b4372
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/5055/default_primary.mpd
-#EXTINF:-1 tvg-id="AXNAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/131_144.png",AXN HD
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/131_144.png" tvg-id="AXNAsia.sg@SD",AXN HD
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=c24a7811d9ab46b48b746a0e7e269210:c321afe1689b07d5b7e55bd025c483ce
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/2303/default_ott.mpd
-#EXTINF:-1 tvg-id="HitsMoviesAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/391_144.png",HITS Movies
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/391_144.png" tvg-id="HitsMoviesAsia.sg@SD",HITS Movies
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key={ "keys":[ { "kty":"oct", "k":"OPv7OlbkD/ksnfisvLqe9g", "kid":"/x/r1wGNDdcRYB55Xg1iEA" } ], "type":"temporary" }
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/2305/default_ott.mpd
-#EXTINF:-1 tvg-id="HBOHitsAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png",HBO Hits
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png" tvg-id="HBOHitsAsia.sg@SD",HBO Hits
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key={ "keys":[ { "kty":"oct", "k":"eWE5ugWiq0Jfl4x/2YtDcg", "kid":"XWAOtwlE1oHCbB9I++YfEA" } ], "type":"temporary" }
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/5055/default_ott.mpd
-#EXTINF:-1 tvg-id="HBOFamilyAsia.sg@SD" tvg-id="" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png",HBO Family
+#EXTINF:-1 tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png" tvg-id="HBOFamilyAsia.sg@SD",HBO Family
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key={ "keys":[ { "kty":"oct", "k":"fjdYjok6uSUuUFvW3aNb6w", "kid":"K5/3zBo9yf70fMV3NHLVEA" } ], "type":"temporary" }
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
 https://linearjitp-playback.astro.com.my/dash-wv/linear/5053/default_ott.mpd
-#EXTINF:-1 tvg-id="HitsNowAsia.sg@SD" tvg-id="" tvg-logo="https://aqfadtv.xyz/logos/HITSNow.png" ,HITS Now
+#EXTINF:-1 tvg-logo="https://aqfadtv.xyz/logos/HITSNow.png" tvg-id="HitsNowAsia.sg@SD",HITS Now
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=clearkey
