@@ -1,38 +1,59 @@
-name: Movies M3U Auto Update
+import requests
+import re
 
-on:
-  schedule:
-    - cron: '7 * * * *'   # avoid 0-minute congestion
-  workflow_dispatch:
+SOURCE_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
+OUTPUT_FILE = "movies.m3u"
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
+HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+def main():
+    r = requests.get(SOURCE_URL, timeout=30)
+    r.raise_for_status()
+    content = r.text
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+    lines = content.splitlines()
+    entries = []
 
-      - name: Install deps
-        run: pip install requests
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
 
-      - name: Run script
-        run: |
-          echo "Running at: $(date -u)"
-          python provider.py
+        if line.startswith("#EXTINF"):
+            block = [line]
+            j = i + 1
 
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+            while j < len(lines):
+                next_line = lines[j].strip()
+                block.append(next_line)
 
-          git add movies.m3u
+                if not next_line.startswith("#"):
+                    break
 
-          git diff --cached --quiet || git commit -m "Update $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+                j += 1
 
-          git push
+            entries.append(block)
+            i = j
+        else:
+            i += 1
+
+    movies = []
+    for block in entries:
+        extinf = block[0]
+        m = re.search(r'group-title="([^"]+)"', extinf, re.IGNORECASE)
+
+        if m and "movie" in m.group(1).lower():
+            movies.append(block)
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write(HEADER + "\n")
+        for block in movies:
+            for idx, line in enumerate(block):
+                # ✅ remove group-title from EXTINF only
+                if idx == 0 and line.startswith("#EXTINF"):
+                    line = re.sub(r'\s*group-title="[^"]+"', '', line)
+                f.write(line + "\n")
+
+    print(f"Saved {len(movies)} movie channels WITHOUT group-title")
+
+if __name__ == "__main__":
+    main()
