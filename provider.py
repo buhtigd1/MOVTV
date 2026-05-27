@@ -14,33 +14,47 @@ def main():
 
     i = 0
     while i < len(lines):
-        if lines[i].startswith("#EXTINF"):
-            extinf = lines[i]
+        line = lines[i].strip()
+
+        if line.startswith("#EXTINF"):
+            block = [line]  # start full block
+
             j = i + 1
 
-            while j < len(lines) and lines[j].startswith("#"):
+            # collect ALL metadata + URL
+            while j < len(lines):
+                next_line = lines[j].strip()
+
+                block.append(next_line)
+
+                # URL = first non-# line
+                if not next_line.startswith("#"):
+                    break
+
                 j += 1
 
-            if j < len(lines):
-                url = lines[j]
-                entries.append((extinf, url))
-
+            entries.append(block)
             i = j
         else:
             i += 1
 
+    # ✅ filter Movies
     movies = []
-    for e, u in entries:
-        m = re.search(r'group-title="([^"]+)"', e, re.IGNORECASE)
-        if m and "movie" in m.group(1).lower():
-            movies.append((e, u))
+    for block in entries:
+        extinf = block[0]
 
+        m = re.search(r'group-title="([^"]+)"', extinf, re.IGNORECASE)
+        if m and "movie" in m.group(1).lower():
+            movies.append(block)
+
+    # ✅ write FULL blocks (with VLCOPT + KODIPROP preserved)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n")
-        for e, u in movies:
-            f.write(f"{e}\n{u}\n")
+        for block in movies:
+            for line in block:
+                f.write(line + "\n")
 
-    print(f"Saved {len(movies)} movie channels")
+    print(f"Saved {len(movies)} movie channels (with metadata intact)")
 
 if __name__ == "__main__":
     main()
