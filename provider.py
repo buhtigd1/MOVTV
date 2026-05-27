@@ -6,7 +6,7 @@ CIGNAL_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3
 
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
+HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" refresh="720"'
 
 # ✅ convert allowed list to lowercase
 CIGNAL_ALLOWED = [
