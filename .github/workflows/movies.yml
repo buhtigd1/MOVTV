@@ -29,7 +29,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
 
-          git add movies_only.m3u
+          git add movies.m3u
 
           git diff --cached --quiet || git commit -m "Update $(date -u +'%a %b %d %T UTC %Y')"
 
