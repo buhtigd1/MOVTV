@@ -1,7 +1,7 @@
 import requests
 import re
 
-SOURCE_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
+SOURCE_URL = "https://bit.ly/4uUwoH6"
 OUTPUT_FILE = "movies.m3u"
 
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
