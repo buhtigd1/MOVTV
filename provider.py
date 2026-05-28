@@ -1,57 +1,59 @@
 import requests
 import re
 
-SOURCE1_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
-SOURCE2_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
-
+SOURCE_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1"'
-HEADERS = {"User-Agent": "Mozilla/5.0"}
+HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
+def main():
+    r = requests.get(SOURCE_URL, timeout=30)
+    r.raise_for_status()
+    content = r.text
 
-# ✅ Allowed channels (Cignal)
-SOURCE2_ALLOWED = [
-    "hbo","hbohits","hbofamily","hbosignature",
-    "cinemax","axn","warner",
-    "tapmovies","rockaction","rockentertainment",
-    "hits","dreamworks"
-]
+    lines = content.splitlines()
+    entries = []
 
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
 
-# ✅ TVG MAP
-TVG_MAP = {
-    "hbo": 'tvg-id="HBOAsia.sg@SD"',
-    "hbo family": 'tvg-id="HBOFamilyAsia.sg@SD"',
-    "hbo hits": 'tvg-id="HBOHitsAsia.sg@SD"',
-    "hbo signature": 'tvg-id="HBOSignatureAsia.sg@SD"',
-    "cinemax": 'tvg-id="CinemaxAsia.sg@SD"',
-    "axn": 'tvg-id="AXNAsia.sg@SD"',
-    "warner": 'tvg-id="WarnerTVAsia.sg@SD"',
-    "tap movies": 'tvg-id="TapMoviesAsia.sg@SD"',
-    "rock action": 'tvg-id="RockActionAsia.sg@SD"',
-    "rock entertainment": 'tvg-id="RockEntertainmentAsia.sg@SD"',
-    "hits": 'tvg-id="HitsAsia.sg@SD"',
-    "dreamworks": 'tvg-id="DreamWorksAsia.sg@SD"',
+        if line.startswith("#EXTINF"):
+            block = [line]
+            j = i + 1
 
-    # Source1
-    "ccm": 'tvg-id="CelestialClassicMovies.id@SD"',
-    "celestial movies": 'tvg-id="CelestialMoviesIndonesia.id@SD"',
-    "galaxy premium": 'tvg-id="GalaxyPremium.id@SD"',
-    "galaxy": 'tvg-id="Galaxy.id@SD"',
-    "imc": 'tvg-id="IMC.id@SD"',
-    "thrill": 'tvg-id="Thrill.hk@SD"',
-    "studio universal": 'tvg-id="StudioUniversalLatinAmerica.us@Brazil"',
-    "tvn movies": 'tvg-id="tvNMoviesAsia.hk@SD"',
-    "zee bioskop": 'tvg-id="ZeeBioskop.id@SD"',
-}
+            while j < len(lines):
+                next_line = lines[j].strip()
+                block.append(next_line)
 
+                if not next_line.startswith("#"):
+                    break
 
-# -----------------------------
+                j += 1
 
-def normalize(name):
-    return re.sub(r'[^a-z0-9]', '', name.lower())
+            entries.append(block)
+            i = j
+        else:
+            i += 1
 
+    movies = []
+    for block in entries:
+        extinf = block[0]
+        m = re.search(r'group-title="([^"]+)"', extinf, re.IGNORECASE)
 
-def clean_name(name):
-    name = name.lower()
+        if m and "movie" in m.group(1).lower():
+            movies.append(block)
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write(HEADER + "\n")
+        for block in movies:
+            for idx, line in enumerate(block):
+                # ✅ remove group-title from EXTINF only
+                if idx == 0 and line.startswith("#EXTINF"):
+                    line = re.sub(r'\s*group-title="[^"]+"', '', line)
+                f.write(line + "\n")
+
+    print(f"Saved {len(movies)} movie channels WITHOUT group-title")
+
+if __name__ == "__main__":
+    main()
