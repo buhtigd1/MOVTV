@@ -9,6 +9,7 @@ OUTPUT_FILE = "movies.m3u"
 
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1"'
 
+
 # ✅ Allowed SOURCE2 channels
 SOURCE2_ALLOWED = [
     "tap movies","hbo","hbo hits","hbo family","hbo signature",
@@ -18,7 +19,8 @@ SOURCE2_ALLOWED = [
     "dreamworks"
 ]
 
-# ✅ TVG-ID MAP
+
+# ✅ TVG-ID mapping
 TVG_MAP = {
     "hbo": 'tvg-id="HBOAsia.sg@SD"',
     "hbo family": 'tvg-id="HBOFamilyAsia.sg@SD"',
@@ -36,7 +38,8 @@ TVG_MAP = {
     "dreamworks": 'tvg-id="DreamWorksAsia.sg@SD"',
 }
 
-# ✅ Parse M3U as blocks
+
+# ✅ Parse M3U into blocks
 def parse_m3u(content):
     lines = content.splitlines()
     entries = []
@@ -63,7 +66,7 @@ def parse_m3u(content):
     return entries
 
 
-# ✅ Source1 = Movies only
+# ✅ Source1 (selected channels)
 def filter_source1(entries):
     result = []
     for block in entries:
@@ -73,7 +76,7 @@ def filter_source1(entries):
     return result
 
 
-# ✅ Source2 = selected channels
+# ✅ Source2 (selected channels)
 def filter_source2(entries):
     result = []
     for block in entries:
@@ -83,7 +86,7 @@ def filter_source2(entries):
     return result
 
 
-# ✅ REMOVE UNWANTED (KEY FIX)
+# ✅ Remove unwanted sources (FINAL FILTER)
 def remove_unwanted(entries):
     filtered = []
 
@@ -91,15 +94,18 @@ def remove_unwanted(entries):
         full_block_text = "\n".join(block).lower()
         name = block[0].split(",", 1)[-1].lower()
 
-        # ❌ remove ONLY DreamWorks (Tagalized)
+        # ❌ Remove DreamWorks (Tagalized ONLY)
         if "dreamworks" in name and "tagalized" in name:
             continue
 
-        # ❌ remove ALL Astro by URL OR name
+        # ❌ Remove Astro streams
         if "astro.com.my" in full_block_text:
             continue
-
         if "astro" in name:
+            continue
+
+        # ❌ Remove Any streams (136.239.x.x)
+        if "136.239." in full_block_text:
             continue
 
         filtered.append(block)
@@ -107,11 +113,11 @@ def remove_unwanted(entries):
     return filtered
 
 
-# ✅ Inject tvg-id correctly
+# ✅ Inject clean tvg-id (remove duplicates)
 def inject_tvg(extinf):
     name = extinf.split(",", 1)[-1].lower().strip()
 
-    # remove ALL existing tvg-id (including empty)
+    # remove ALL tvg-id (including empty)
     extinf = re.sub(r'\s*tvg-id="[^"]*"', '', extinf)
 
     for key in sorted(TVG_MAP.keys(), key=len, reverse=True):
@@ -126,7 +132,7 @@ def inject_tvg(extinf):
     return extinf
 
 
-# ✅ Clean EXTINF line
+# ✅ Clean EXTINF formatting
 def clean_extinf(line):
     line = re.sub(r'\s*group-title="[^"]+"', '', line, flags=re.IGNORECASE)
     line = re.sub(r'\s+', ' ', line)
@@ -152,12 +158,11 @@ def main():
 
     merged = src1_movies + src2_selected
 
-    # ✅ remove unwanted blocks (Astro + Tagalized)
+    # ✅ APPLY ALL CLEANUPS HERE
     merged = remove_unwanted(merged)
 
     print(f"Final channels: {len(merged)}")
 
-    # ✅ WRITE OUTPUT
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
 
