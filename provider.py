@@ -15,7 +15,7 @@ CIGNAL_ALLOWED = [
     "hbo","hbo hits","hbo family","hbo signature","cinemax",
     "axn","warner tv",
     "rock action","rock entertainment",
-    "hits hd","hits now","hits movies",
+    "hits hd","HITS Now","hits movies",
     "dreamworks"
 ]
 
@@ -31,7 +31,7 @@ TVG_MAP = {
     "tap movies": 'tvg-id=""',
     "rock action": 'tvg-id="ROCKAction.sg@SD"',
     "rock entertainment": 'tvg-id="ROCKEntertainment.sg@SD"',
-    "hits now": 'tvg-id="HITSNOW.sg@SD"',
+    "HITS Now": 'tvg-id="HITSNOW.sg@SD"',
     "hits movies": 'tvg-id="HITSMovies.sg@SD"',
     "hits hd": 'tvg-id="HITS.sg@SD"',
 }
