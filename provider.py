@@ -160,8 +160,12 @@ def main():
         for block in merged:
             for idx, line in enumerate(block):
 
-                # ✅ NEW: replace cg_hitsnow everywhere
+                # ✅ NEW: replace specific texts everywhere
                 line = line.replace("cg_hitsnow", "HITSNOW.sg@SD")
+                line = line.replace("https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch111_170_122")
+                line = line.replace("https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png?fbclid=IwY2xjawGIHF9leHRuA2FlbQIxMAABHaW0_Y0A9XL4w1ZXDSwAZCAxe62ui1Oy3gU5wjykfHsZ0eCjzNxl05M0JQ_aem_NIH5vZtTty4_B8wy5fB2LA", "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockaction-ph.png")
+                line = line.replace("https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch112_170_122")
+                line = line.replace("https://cdn.prod.website-files.com/67ad5259c6e804a40b4bae92/67ad5259c6e804a40b4bb0c1_logo_ent_red_web.png", "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockentertainment-ph.png")
 
                 if idx == 0:
                     line = clean_extinf(line)
