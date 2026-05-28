@@ -4,7 +4,7 @@ import re
 SOURCE_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
+HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/"'
 
 def main():
     r = requests.get(SOURCE_URL, timeout=30)
