@@ -8,7 +8,7 @@ OUTPUT_FILE = "movies.m3u"
 
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
-# ✅ convert allowed list to lowercase
+# ✅ Allowed Cignal channels
 CIGNAL_ALLOWED = [
     "tap movies","hbo","hbo hits","hbo family","hbo signature",
     "cinemax","axn","warner tv",
@@ -17,7 +17,7 @@ CIGNAL_ALLOWED = [
     "dreamworks"
 ]
 
-# ✅ lowercase keys for matching
+# ✅ TVG mapping
 TVG_MAP = {
     "hbo": 'tvg-id="HBOAsia.sg@SD"',
     "hbo family": 'tvg-id="HBOFamilyAsia.sg@SD"',
@@ -34,21 +34,34 @@ TVG_MAP = {
     "hits hd": 'tvg-id="HitsAsia.sg@SD"',
 }
 
+# ✅ Download safely
+def download(url):
+    try:
+        r = requests.get(url, timeout=30)
+        r.raise_for_status()
+        return r.text
+    except requests.RequestException as e:
+        print(f"❌ Failed to download: {url}\n{e}")
+        return ""
+
+# ✅ Parse M3U blocks
 def parse_m3u(content):
     lines = content.splitlines()
     entries = []
     i = 0
 
     while i < len(lines):
-        if lines[i].startswith("#EXTINF"):
-            block = [lines[i]]
+        line = lines[i].strip()
+
+        if line.startswith("#EXTINF"):
+            block = [line]
             j = i + 1
 
             while j < len(lines):
-                line = lines[j]
-                block.append(line)
+                next_line = lines[j].strip()
+                block.append(next_line)
 
-                if not line.startswith("#"):
+                if not next_line.startswith("#"):
                     break
                 j += 1
 
@@ -59,7 +72,7 @@ def parse_m3u(content):
 
     return entries
 
-
+# ✅ Filter Indihome movies
 def filter_indihome(entries):
     result = []
     for block in entries:
@@ -68,18 +81,37 @@ def filter_indihome(entries):
             result.append(block)
     return result
 
-
+# ✅ Filter Cignal channels
 def filter_cignal(entries):
     result = []
     for block in entries:
-        name = block[0].split(",", 1)[-1].lower()
+        name = block[0].split(",", 1)[-1].lower().strip()
 
         if any(ch in name for ch in CIGNAL_ALLOWED):
             result.append(block)
 
     return result
 
+# ✅ Remove bad streams (ZTE + Astro)
+def is_block_allowed(block):
+    text = " ".join(block).lower()
+    url = block[-1].lower() if block else ""
 
+    # ❌ Remove ZTE streams
+    if (
+        "136.239." in url or
+        ":6610" in url or
+        "zte.com" in url
+    ):
+        return False
+
+    # ❌ Remove Astro streams
+    if "linearjitp-playback.astro.com.my" in url:
+        return False
+
+    return True
+
+# ✅ Inject tvg-id
 def inject_tvg(extinf):
     name = extinf.split(",", 1)[-1].lower().strip()
 
@@ -87,26 +119,22 @@ def inject_tvg(extinf):
         if key in name:
             tvg = TVG_MAP[key]
 
-            # remove existing tvg-id
             extinf = re.sub(r'\s*tvg-id="[^"]+"', '', extinf)
-
-            # insert tvg-id
             extinf = extinf.replace("#EXTINF:-1", f"#EXTINF:-1 {tvg}")
             break
 
     return extinf
 
-
+# ✅ Remove group-title
 def clean_extinf(line):
-    # remove group-title
     return re.sub(r'\s*group-title="[^"]+"', '', line, flags=re.IGNORECASE)
 
-
+# ✅ Main
 def main():
     print("Downloading...")
 
-    indihome = requests.get(INDIHOME_URL).text
-    cignal = requests.get(CIGNAL_URL).text
+    indihome = download(INDIHOME_URL)
+    cignal = download(CIGNAL_URL)
 
     print("Parsing...")
 
@@ -118,9 +146,16 @@ def main():
     ind_movies = filter_indihome(ind_entries)
     cig_selected = filter_cignal(cig_entries)
 
-    merged = ind_movies + cig_selected
+    merged = []
+
+    # ✅ Apply final filtering (ZTE + Astro removal)
+    for block in ind_movies + cig_selected:
+        if is_block_allowed(block):
+            merged.append(block)
 
     print(f"Total channels: {len(merged)}")
+
+    print("Writing file...")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
@@ -130,12 +165,11 @@ def main():
 
                 if idx == 0:
                     line = clean_extinf(line)
-                    line = inject_tvg(line)  # ✅ always apply safely
+                    line = inject_tvg(line)
 
                 f.write(line + "\n")
 
     print("✅ Done: movies.m3u")
-
 
 if __name__ == "__main__":
     main()
