@@ -8,8 +8,11 @@ OUTPUT_FILE = "movies.m3u"
 
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1"'
 
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
 
-# ✅ Allowed channels
+# ✅ Allowed channels (source2)
 SOURCE2_ALLOWED = [
     "tap movies","hbo","hbo hits","hbo family","hbo signature",
     "cinemax","axn","warner tv",
@@ -18,13 +21,14 @@ SOURCE2_ALLOWED = [
     "dreamworks"
 ]
 
-# ✅ TVG-ID MAP
+# ✅ FULL TVG MAP (expanded)
 TVG_MAP = {
+    # premium
     "hbo": 'tvg-id="HBOAsia.sg@SD"',
     "hbo family": 'tvg-id="HBOFamilyAsia.sg@SD"',
     "hbo hits": 'tvg-id="HBOHitsAsia.sg@SD"',
     "hbo signature": 'tvg-id="HBOSignatureAsia.sg@SD"',
-    "cinemax": 'tvg-id="CinemaxAsia.sg@SD"',
+    "cinemax": 'tvg-id="CinemaxAsia.sg@SD"',  
     "axn": 'tvg-id="AXNAsia.sg@SD"',
     "warner tv": 'tvg-id="WarnerTVAsia.sg@SD"',
     "tap movies": 'tvg-id="TapMoviesAsia.sg@SD"',
@@ -34,23 +38,37 @@ TVG_MAP = {
     "hits movies": 'tvg-id="HitsMoviesAsia.sg@SD"',
     "hits hd": 'tvg-id="HitsAsia.sg@SD"',
     "dreamworks": 'tvg-id="DreamWorksAsia.sg@SD"',
+
+    # ✅ source1 additions
+    "ccm": 'tvg-id="CCMAsia.sg@SD"',
+    "celestial movies": 'tvg-id="CelestialMoviesAsia.sg@SD"',
+    "galaxy premium": 'tvg-id="GalaxyPremiumAsia.sg@SD"',
+    "galaxy": 'tvg-id="GalaxyAsia.sg@SD"',
+    "imc": 'tvg-id="IMCAsia.sg@SD"',
+    "thrill": 'tvg-id="ThrillAsia.sg@SD"',
+    "studio universal": 'tvg-id="StudioUniversalAsia.sg@SD"',
+    "tvn movies": 'tvg-id="tvNMoviesAsia.sg@SD"',
+    "zee bioskop": 'tvg-id="ZeeBioskopAsia.sg@SD"',
+    "my cinema europe": 'tvg-id="MyCinemaEurope.uk@SD"',
+    "wedotv movies": 'tvg-id="WeDoTVMovies.de@SD"',
 }
 
-# ✅ LOGO REPLACEMENT MAP
+# ✅ LOGO REPLACEMENT
 LOGO_MAP = {
     "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png":
         "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch111_170_122",
 
-    "https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png":
+    "https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png?fbclid=IwY2xjawGIHF9leHRuA2FlbQIxMAABHaW0_Y0A9XL4w1ZXDSwAZCAxe62ui1Oy3gU5wjykfHsZ0eCjzNxl05M0JQ_aem_NIH5vZtTty4_B8wy5fB2LA":
         "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockaction-ph.png",
 
     "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png":
         "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch112_170_122",
 
     "https://cdn.prod.website-files.com/67ad5259c6e804a40b4bae92/67ad5259c6e804a40b4bb0c1_logo_ent_red_web.png":
-        "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockentertainment-ph.png",
+        "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockentertainment-ph.png",  
 }
 
+# -----------------------------
 
 def parse_m3u(content):
     lines = content.splitlines()
@@ -63,10 +81,8 @@ def parse_m3u(content):
             j = i + 1
 
             while j < len(lines):
-                line = lines[j]
-                block.append(line)
-
-                if not line.startswith("#"):
+                block.append(lines[j])
+                if not lines[j].startswith("#"):
                     break
                 j += 1
 
@@ -90,8 +106,9 @@ def filter_source1(entries):
 def filter_source2(entries):
     result = []
     for block in entries:
-        name = block[0].split(",", 1)[-1].lower()
-        if any(ch in name for ch in SOURCE2_ALLOWED):
+        name = block[0].split(",", 1)[-1].strip().lower()
+
+        if any(name.startswith(ch) for ch in SOURCE2_ALLOWED):
             result.append(block)
     return result
 
@@ -103,13 +120,13 @@ def remove_unwanted(entries):
         full = "\n".join(block).lower()
         name = block[0].split(",", 1)[-1].lower()
 
-        if "dreamworks" in name and "tagalized" in name:
+        if "tagalized" in full:
             continue
-
-        if "astro.com.my" in full or "astro" in name:
+        if "astro" in full:
             continue
-
         if "136.239." in full:
+            continue
+        if any(x in full for x in ["test", "backup", "offline"]):
             continue
 
         filtered.append(block)
@@ -117,21 +134,40 @@ def remove_unwanted(entries):
     return filtered
 
 
-def inject_tvg(extinf):
-    name = extinf.split(",", 1)[-1].lower()
+def dedupe(entries):
+    seen = set()
+    result = []
 
+    for block in entries:
+        name = block[0].split(",", 1)[-1].strip().lower()
+        if name not in seen:
+            seen.add(name)
+            result.append(block)
+
+    return result
+
+
+def inject_tvg(extinf):
+    name = extinf.split(",", 1)[-1].strip()
+    name_lower = name.lower()
+
+    # remove old tvg-id
     extinf = re.sub(r'\s*tvg-id="[^"]*"', '', extinf)
 
+    # match known
     for key in sorted(TVG_MAP.keys(), key=len, reverse=True):
-        if key in name:
+        if name_lower.startswith(key):
             parts = extinf.split(",", 1)
-            parts[0] = parts[0].strip() + " " + TVG_MAP[key]
+            parts[0] += " " + TVG_MAP[key]
             return ",".join(parts)
 
-    return extinf
+    # ✅ fallback auto id
+    slug = re.sub(r'[^a-z0-9]+', '', name_lower)
+    parts = extinf.split(",", 1)
+    parts[0] += f' tvg-id="{slug}.auto"'
+    return ",".join(parts)
 
 
-# ✅ NEW: replace logos
 def replace_logo(line):
     for old, new in LOGO_MAP.items():
         if old in line:
@@ -141,17 +177,18 @@ def replace_logo(line):
 
 def clean_extinf(line):
     line = re.sub(r'\s*group-title="[^"]+"', '', line)
-    line = replace_logo(line)   # ✅ apply logo replacement
+    line = replace_logo(line)
     line = re.sub(r'\s+', ' ', line)
-    line = re.sub(r',\s*', ',', line)
     return line.strip()
 
+
+# -----------------------------
 
 def main():
     print("Downloading...")
 
-    src1 = requests.get(SOURCE1_URL).text
-    src2 = requests.get(SOURCE2_URL).text
+    src1 = requests.get(SOURCE1_URL, headers=headers, timeout=10).text
+    src2 = requests.get(SOURCE2_URL, headers=headers, timeout=10).text
 
     print("Parsing...")
 
@@ -165,6 +202,7 @@ def main():
 
     merged = s1 + s2
     merged = remove_unwanted(merged)
+    merged = dedupe(merged)
 
     print("Writing file...")
 
@@ -173,15 +211,15 @@ def main():
 
         for block in merged:
             for i, line in enumerate(block):
-
                 if i == 0:
                     line = clean_extinf(line)
                     line = inject_tvg(line)
-
                 f.write(line.strip() + "\n")
 
-    print("✅ DONE")
+    print("✅ DONE: movies.m3u created")
 
+
+# -----------------------------
 
 if __name__ == "__main__":
     main()
