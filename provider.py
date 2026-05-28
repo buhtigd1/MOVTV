@@ -89,15 +89,13 @@ def filter_cignal(entries):
 
         if any(ch in name for ch in CIGNAL_ALLOWED):
             result.append(block)
-
     return result
 
 # ✅ Remove bad streams (ZTE + Astro)
 def is_block_allowed(block):
-    text = " ".join(block).lower()
     url = block[-1].lower() if block else ""
 
-    # ❌ Remove ZTE streams
+    # ❌ ZTE streams
     if (
         "136.239." in url or
         ":6610" in url or
@@ -105,8 +103,17 @@ def is_block_allowed(block):
     ):
         return False
 
-    # ❌ Remove Astro streams
+    # ❌ Astro streams
     if "linearjitp-playback.astro.com.my" in url:
+        return False
+
+    return True
+
+# ✅ Remove DreamWorks Tagalized only
+def remove_tagalized(block):
+    name = block[0].split(",", 1)[-1].lower()
+
+    if "dreamworks" in name and any(x in name for x in ["tagalized", "tagalog", "tag dub"]):
         return False
 
     return True
@@ -148,9 +155,9 @@ def main():
 
     merged = []
 
-    # ✅ Apply final filtering (ZTE + Astro removal)
+    # ✅ Final filtering
     for block in ind_movies + cig_selected:
-        if is_block_allowed(block):
+        if is_block_allowed(block) and remove_tagalized(block):
             merged.append(block)
 
     print(f"Total channels: {len(merged)}")
