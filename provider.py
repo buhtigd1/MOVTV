@@ -1,13 +1,14 @@
 import requests
 import re
 
-# ✅ Renamed sources
+# ✅ Sources
 SOURCE1_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
 SOURCE2_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
+SOURCE3_URL = "https://raw.githubusercontent.com/buhtigd1/PTV2/main/pluto_us.m3u"
 
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
+HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3,https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/us.xml.gz" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
 # ✅ Allowed Source 2 channels
 CIGNAL_ALLOWED = [
@@ -91,6 +92,15 @@ def filter_source2(entries):
             result.append(block)
     return result
 
+# ✅ Source 3 filter (Pluto Movies only)
+def filter_source3(entries):
+    result = []
+    for block in entries:
+        m = re.search(r'group-title="([^"]+)"', block[0], re.IGNORECASE)
+        if m and m.group(1).strip().lower() == "movies":
+            result.append(block)
+    return result
+
 # ✅ Remove bad streams
 def is_block_allowed(block):
     url = block[-1].lower() if block else ""
@@ -135,20 +145,23 @@ def main():
 
     source1 = download(SOURCE1_URL)
     source2 = download(SOURCE2_URL)
+    source3 = download(SOURCE3_URL)
 
     print("Parsing...")
 
     entries1 = parse_m3u(source1)
     entries2 = parse_m3u(source2)
+    entries3 = parse_m3u(source3)
 
     print("Filtering...")
 
     filtered1 = filter_source1(entries1)
     filtered2 = filter_source2(entries2)
+    filtered3 = filter_source3(entries3)
 
     merged = []
 
-    for block in filtered1 + filtered2:
+    for block in filtered1 + filtered2 + filtered3:
         if is_block_allowed(block) and remove_tagalized(block):
             merged.append(block)
 
@@ -160,7 +173,7 @@ def main():
         for block in merged:
             for idx, line in enumerate(block):
 
-                # ✅ NEW: replace specific texts everywhere
+                # ✅ replacements
                 line = line.replace("cg_hitsnow", "HITSNOW.sg@SD")
                 line = line.replace("https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch111_170_122")
                 line = line.replace("https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png?fbclid=IwY2xjawGIHF9leHRuA2FlbQIxMAABHaW0_Y0A9XL4w1ZXDSwAZCAxe62ui1Oy3gU5wjykfHsZ0eCjzNxl05M0JQ_aem_NIH5vZtTty4_B8wy5fB2LA", "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockaction-ph.png")
@@ -168,7 +181,7 @@ def main():
                 line = line.replace("https://cdn.prod.website-files.com/67ad5259c6e804a40b4bae92/67ad5259c6e804a40b4bb0c1_logo_ent_red_web.png", "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockentertainment-ph.png")
                 line = line.replace("https://i.imgur.com/t4HF5va.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch114_170_122")
                 line = line.replace("https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch113_170_122")
-                
+
                 if idx == 0:
                     line = clean_extinf(line)
                     line = inject_tvg(line)
