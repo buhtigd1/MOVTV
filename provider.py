@@ -11,8 +11,9 @@ HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $Nested
 
 # ✅ Allowed Source 2 channels
 CIGNAL_ALLOWED = [
-    "tap movies","hbo","hbo hits","hbo family","hbo signature",
-    "cinemax","axn","warner tv",
+    "tap movies",
+    "hbo","hbo hits","hbo family","hbo signature","cinemax",
+    "axn","warner tv",
     "rock action","rock entertainment",
     "hits hd","hits now","hits movies",
     "dreamworks"
