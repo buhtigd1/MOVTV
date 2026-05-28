@@ -5,6 +5,7 @@ import re
 SOURCE1_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
 SOURCE2_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
 SOURCE3_URL = "https://raw.githubusercontent.com/buhtigd1/PTV2/main/pluto_us.m3u"
+SOURCE4_URL = "https://raw.githubusercontent.com/buhtigd1/PTV/main/output/plutotv_us.m3u8"
 
 OUTPUT_FILE = "movies.m3u"
 
@@ -92,8 +93,17 @@ def filter_source2(entries):
             result.append(block)
     return result
 
-# ✅ Source 3 filter (Pluto Movies only)
+# ✅ Source 3 filter
 def filter_source3(entries):
+    result = []
+    for block in entries:
+        m = re.search(r'group-title="([^"]+)"', block[0], re.IGNORECASE)
+        if m and m.group(1).strip().lower() == "movies":
+            result.append(block)
+    return result
+
+# ✅ Source 4 filter
+def filter_source4(entries):
     result = []
     for block in entries:
         m = re.search(r'group-title="([^"]+)"', block[0], re.IGNORECASE)
@@ -146,22 +156,26 @@ def main():
     source1 = download(SOURCE1_URL)
     source2 = download(SOURCE2_URL)
     source3 = download(SOURCE3_URL)
+    source4 = download(SOURCE4_URL)
 
     print("Parsing...")
 
     entries1 = parse_m3u(source1)
     entries2 = parse_m3u(source2)
     entries3 = parse_m3u(source3)
+    entries4 = parse_m3u(source4)
 
     print("Filtering...")
 
     filtered1 = filter_source1(entries1)
     filtered2 = filter_source2(entries2)
     filtered3 = filter_source3(entries3)
+    filtered4 = filter_source4(entries4)
 
     merged = []
 
-    for block in filtered1 + filtered2 + filtered3:
+    # ✅ keep duplicates (no dedup applied)
+    for block in filtered1 + filtered2 + filtered3 + filtered4:
         if is_block_allowed(block) and remove_tagalized(block):
             merged.append(block)
 
