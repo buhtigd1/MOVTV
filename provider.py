@@ -72,11 +72,9 @@ def is_valid_source2(block):
     if "linearjitp-playback.astro.com.my" in url:
         return False
 
-    # ❌ Remove ZTE streams
+    # ❌ Remove Any streams
     if (
-        "136.239.158.10:6610" in url or
-        "zte.com" in url or
-        "virtualdomain=001.live_hls.zte.com" in url
+        "136.239.158.10:6610" in url
     ):
         return False
 
@@ -101,16 +99,6 @@ def main():
     for block in entries2:
         if is_valid_source2(block) and is_movie(block):
             merged.append(clean_block(block))
-
-    # ✅ Remove duplicates
-    seen = set()
-    unique = []
-
-    for block in merged:
-        key = tuple(block)
-        if key not in seen:
-            seen.add(key)
-            unique.append(block)
 
     # ✅ Write output
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
