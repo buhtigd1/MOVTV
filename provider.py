@@ -73,7 +73,7 @@ def parse_m3u(content):
 
     return entries
 
-# ✅ Source 1 filter (Indihome movies)
+# ✅ Source 1 filter
 def filter_source1(entries):
     result = []
     for block in entries:
@@ -82,7 +82,7 @@ def filter_source1(entries):
             result.append(block)
     return result
 
-# ✅ Source 2 filter (Cignal allowed channels)
+# ✅ Source 2 filter
 def filter_source2(entries):
     result = []
     for block in entries:
@@ -110,11 +110,10 @@ def remove_tagalized(block):
         return False
     return True
 
-# ✅ Clean tvg-id
+# ✅ Inject tvg-id
 def inject_tvg(extinf):
     name = extinf.split(",", 1)[-1].lower().strip()
 
-    # remove empty only
     extinf = re.sub(r'\s*tvg-id=""', '', extinf)
 
     if 'tvg-id="' in extinf:
@@ -160,6 +159,9 @@ def main():
 
         for block in merged:
             for idx, line in enumerate(block):
+
+                # ✅ NEW: replace cg_hitsnow everywhere
+                line = line.replace("cg_hitsnow", "HITSNOW.sg@SD")
 
                 if idx == 0:
                     line = clean_extinf(line)
