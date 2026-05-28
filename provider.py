@@ -31,7 +31,7 @@ TVG_MAP = {
     "tap movies": 'tvg-id=""',
     "rock action": 'tvg-id="ROCKAction.sg@SD"',
     "rock entertainment": 'tvg-id="ROCKEntertainment.sg@SD"',
-    "HITS Now": 'tvg-id="HITSNOW.sg@SD"',
+    "hits now": 'tvg-id="HITSNOW.sg@SD"',
     "hits movies": 'tvg-id="HITSMovies.sg@SD"',
     "hits hd": 'tvg-id="HITS.sg@SD"',
 }
