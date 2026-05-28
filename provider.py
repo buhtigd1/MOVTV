@@ -25,14 +25,14 @@ TVG_MAP = {
     "hbo hits": 'tvg-id="HBOHitsAsia.sg@SD"',
     "hbo signature": 'tvg-id="HBOSignatureAsia.sg@SD"',
     "cinemax": 'tvg-id="CinemaxAsia.sg@SD"',
-    "axn": 'tvg-id="AXNAsia.sg@SD"',
-    "warner tv": 'tvg-id="WarnerTVAsia.sg@SD"',
-    "tap movies": 'tvg-id="TapMoviesAsia.sg@SD"',
-    "rock action": 'tvg-id="RockActionAsia.sg@SD"',
-    "rock entertainment": 'tvg-id="RockEntertainmentAsia.sg@SD"',
-    "hits now": 'tvg-id="HitsNowAsia.sg@SD"',
-    "hits movies": 'tvg-id="HitsMoviesAsia.sg@SD"',
-    "hits hd": 'tvg-id="HitsAsia.sg@SD"',
+    "axn": 'tvg-id="AXNAsia.sg@Singapore"',
+    "warner tv": 'tvg-id=""',
+    "tap movies": 'tvg-id=""',
+    "rock action": 'tvg-id="ROCKAction.sg@SD"',
+    "rock entertainment": 'tvg-id="ROCKEntertainment.sg@SD"',
+    "hits now": 'tvg-id="HITSNOW.sg@SD"',
+    "hits movies": 'tvg-id="HITSMovies.sg@SD"',
+    "hits hd": 'tvg-id="HITS.sg@SD"',
 }
 
 def download(url):
