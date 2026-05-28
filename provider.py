@@ -1,7 +1,6 @@
 import requests
 import re
 
-# ✅ SOURCES
 SOURCE1_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
 SOURCE2_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
 
@@ -10,7 +9,7 @@ OUTPUT_FILE = "movies.m3u"
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1"'
 
 
-# ✅ Allowed SOURCE2 channels
+# ✅ Allowed channels
 SOURCE2_ALLOWED = [
     "tap movies","hbo","hbo hits","hbo family","hbo signature",
     "cinemax","axn","warner tv",
@@ -19,8 +18,7 @@ SOURCE2_ALLOWED = [
     "dreamworks"
 ]
 
-
-# ✅ TVG-ID mapping
+# ✅ TVG-ID MAP
 TVG_MAP = {
     "hbo": 'tvg-id="HBOAsia.sg@SD"',
     "hbo family": 'tvg-id="HBOFamilyAsia.sg@SD"',
@@ -38,8 +36,22 @@ TVG_MAP = {
     "dreamworks": 'tvg-id="DreamWorksAsia.sg@SD"',
 }
 
+# ✅ LOGO REPLACEMENT MAP
+LOGO_MAP = {
+    "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png":
+        "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch111_170_122",
 
-# ✅ Parse M3U into blocks
+    "https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png":
+        "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockaction-ph.png",
+
+    "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png":
+        "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch112_170_122",
+
+    "https://cdn.prod.website-files.com/67ad5259c6e804a40b4bae92/67ad5259c6e804a40b4bb0c1_logo_ent_red_web.png":
+        "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockentertainment-ph.png",
+}
+
+
 def parse_m3u(content):
     lines = content.splitlines()
     entries = []
@@ -66,7 +78,6 @@ def parse_m3u(content):
     return entries
 
 
-# ✅ Source1 (selected channels)
 def filter_source1(entries):
     result = []
     for block in entries:
@@ -76,7 +87,6 @@ def filter_source1(entries):
     return result
 
 
-# ✅ Source2 (selected channels)
 def filter_source2(entries):
     result = []
     for block in entries:
@@ -86,26 +96,20 @@ def filter_source2(entries):
     return result
 
 
-# ✅ Remove unwanted sources (FINAL FILTER)
 def remove_unwanted(entries):
     filtered = []
 
     for block in entries:
-        full_block_text = "\n".join(block).lower()
+        full = "\n".join(block).lower()
         name = block[0].split(",", 1)[-1].lower()
 
-        # ❌ Remove DreamWorks (Tagalized ONLY)
         if "dreamworks" in name and "tagalized" in name:
             continue
 
-        # ❌ Remove Astro streams
-        if "astro.com.my" in full_block_text:
-            continue
-        if "astro" in name:
+        if "astro.com.my" in full or "astro" in name:
             continue
 
-        # ❌ Remove Any streams (136.239.x.x)
-        if "136.239." in full_block_text:
+        if "136.239." in full:
             continue
 
         filtered.append(block)
@@ -113,69 +117,70 @@ def remove_unwanted(entries):
     return filtered
 
 
-# ✅ Inject clean tvg-id (remove duplicates)
 def inject_tvg(extinf):
-    name = extinf.split(",", 1)[-1].lower().strip()
+    name = extinf.split(",", 1)[-1].lower()
 
-    # remove ALL tvg-id (including empty)
     extinf = re.sub(r'\s*tvg-id="[^"]*"', '', extinf)
 
     for key in sorted(TVG_MAP.keys(), key=len, reverse=True):
         if key in name:
-            tvg = TVG_MAP[key]
-
             parts = extinf.split(",", 1)
-            parts[0] = parts[0].strip() + f" {tvg}"
-
+            parts[0] = parts[0].strip() + " " + TVG_MAP[key]
             return ",".join(parts)
 
     return extinf
 
 
-# ✅ Clean EXTINF formatting
+# ✅ NEW: replace logos
+def replace_logo(line):
+    for old, new in LOGO_MAP.items():
+        if old in line:
+            line = line.replace(old, new)
+    return line
+
+
 def clean_extinf(line):
-    line = re.sub(r'\s*group-title="[^"]+"', '', line, flags=re.IGNORECASE)
+    line = re.sub(r'\s*group-title="[^"]+"', '', line)
+    line = replace_logo(line)   # ✅ apply logo replacement
     line = re.sub(r'\s+', ' ', line)
     line = re.sub(r',\s*', ',', line)
     return line.strip()
 
 
 def main():
-    print("Downloading sources...")
+    print("Downloading...")
 
-    src1 = requests.get(SOURCE1_URL, timeout=30).text
-    src2 = requests.get(SOURCE2_URL, timeout=30).text
+    src1 = requests.get(SOURCE1_URL).text
+    src2 = requests.get(SOURCE2_URL).text
 
     print("Parsing...")
 
-    src1_entries = parse_m3u(src1)
-    src2_entries = parse_m3u(src2)
+    s1 = parse_m3u(src1)
+    s2 = parse_m3u(src2)
 
     print("Filtering...")
 
-    src1_movies = filter_source1(src1_entries)
-    src2_selected = filter_source2(src2_entries)
+    s1 = filter_source1(s1)
+    s2 = filter_source2(s2)
 
-    merged = src1_movies + src2_selected
-
-    # ✅ APPLY ALL CLEANUPS HERE
+    merged = s1 + s2
     merged = remove_unwanted(merged)
 
-    print(f"Final channels: {len(merged)}")
+    print("Writing file...")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
 
         for block in merged:
-            for idx, line in enumerate(block):
+            for i, line in enumerate(block):
 
-                if idx == 0:
+                if i == 0:
                     line = clean_extinf(line)
                     line = inject_tvg(line)
 
                 f.write(line.strip() + "\n")
 
-    print("✅ DONE: movies.m3u generated successfully")
+    print("✅ DONE")
 
 
 if __name__ == "__main__":
