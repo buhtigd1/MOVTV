@@ -15,7 +15,7 @@ CIGNAL_ALLOWED = [
     "hbo","hbo hits","hbo family","hbo signature","cinemax",
     "axn","warner tv",
     "rock action","rock entertainment",
-    "hits hd","HITS Now","hits movies",
+    "hits hd","hits now","hits movies",
     "dreamworks"
 ]
 
