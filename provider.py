@@ -66,13 +66,13 @@ def is_valid_source2(block):
     extinf = block[0].lower()
     url = block[-1].lower() if block else ""
 
-    # ❌ Remove Astro (name + URL)
+    # ❌ Remove Astro
     if "astro" in extinf:
         return False
     if "linearjitp-playback.astro.com.my" in url:
         return False
 
-    # ❌ Remove Any streams
+    # ❌ Remove Any
     if (
         "136.239.158.10:6610" in url
     ):
@@ -100,14 +100,16 @@ def main():
         if is_valid_source2(block) and is_movie(block):
             merged.append(clean_block(block))
 
+    # ✅ NO DEDUPLICATION (duplicates kept)
+
     # ✅ Write output
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
-        for block in unique:
+        for block in merged:
             for line in block:
                 f.write(line + "\n")
 
-    print(f"✅ Saved {len(unique)} cleaned movie channels")
+    print(f"✅ Saved {len(merged)} movie channels (duplicates kept)")
 
 if __name__ == "__main__":
     main()
