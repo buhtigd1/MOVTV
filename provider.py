@@ -1,14 +1,15 @@
 import requests
 import re
 
-INDIHOME_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
-CIGNAL_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
+# ✅ Renamed sources
+SOURCE1_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
+SOURCE2_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
 
 OUTPUT_FILE = "movies.m3u"
 
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
-# ✅ Allowed Cignal channels
+# ✅ Allowed Source 2 channels
 CIGNAL_ALLOWED = [
     "tap movies","hbo","hbo hits","hbo family","hbo signature",
     "cinemax","axn","warner tv",
@@ -34,17 +35,15 @@ TVG_MAP = {
     "hits hd": 'tvg-id="HitsAsia.sg@SD"',
 }
 
-# ✅ Download safely
 def download(url):
     try:
         r = requests.get(url, timeout=30)
         r.raise_for_status()
         return r.text
     except requests.RequestException as e:
-        print(f"❌ Failed to download: {url}\n{e}")
+        print(f"❌ Failed: {url}\n{e}")
         return ""
 
-# ✅ Parse M3U blocks
 def parse_m3u(content):
     lines = content.splitlines()
     entries = []
@@ -63,6 +62,7 @@ def parse_m3u(content):
 
                 if not next_line.startswith("#"):
                     break
+
                 j += 1
 
             entries.append(block)
@@ -72,8 +72,8 @@ def parse_m3u(content):
 
     return entries
 
-# ✅ Filter Indihome movies
-def filter_indihome(entries):
+# ✅ Source 1 filter (Indihome movies)
+def filter_source1(entries):
     result = []
     for block in entries:
         m = re.search(r'group-title="([^"]+)"', block[0], re.IGNORECASE)
@@ -81,88 +81,78 @@ def filter_indihome(entries):
             result.append(block)
     return result
 
-# ✅ Filter Cignal channels
-def filter_cignal(entries):
+# ✅ Source 2 filter (Cignal allowed channels)
+def filter_source2(entries):
     result = []
     for block in entries:
         name = block[0].split(",", 1)[-1].lower().strip()
-
         if any(ch in name for ch in CIGNAL_ALLOWED):
             result.append(block)
     return result
 
-# ✅ Remove bad streams (ZTE + Astro)
+# ✅ Remove bad streams
 def is_block_allowed(block):
     url = block[-1].lower() if block else ""
 
-    # ❌ ZTE streams
-    if (
-        "136.239." in url or
-        ":6610" in url or
-        "zte.com" in url
-    ):
+    if "136.239." in url or ":6610" in url or "zte.com" in url:
         return False
 
-    # ❌ Astro streams
     if "linearjitp-playback.astro.com.my" in url:
         return False
 
     return True
 
-# ✅ Remove DreamWorks Tagalized only
+# ✅ Remove DreamWorks Tagalized
 def remove_tagalized(block):
     name = block[0].split(",", 1)[-1].lower()
-
     if "dreamworks" in name and any(x in name for x in ["tagalized", "tagalog", "tag dub"]):
         return False
-
     return True
 
-# ✅ Inject tvg-id
+# ✅ Clean tvg-id
 def inject_tvg(extinf):
     name = extinf.split(",", 1)[-1].lower().strip()
+
+    # remove empty only
+    extinf = re.sub(r'\s*tvg-id=""', '', extinf)
+
+    if 'tvg-id="' in extinf:
+        return extinf
 
     for key in sorted(TVG_MAP.keys(), key=len, reverse=True):
         if key in name:
             tvg = TVG_MAP[key]
-
-            extinf = re.sub(r'\s*tvg-id="[^"]+"', '', extinf)
             extinf = extinf.replace("#EXTINF:-1", f"#EXTINF:-1 {tvg}")
             break
 
     return extinf
 
-# ✅ Remove group-title
 def clean_extinf(line):
     return re.sub(r'\s*group-title="[^"]+"', '', line, flags=re.IGNORECASE)
 
-# ✅ Main
 def main():
     print("Downloading...")
 
-    indihome = download(INDIHOME_URL)
-    cignal = download(CIGNAL_URL)
+    source1 = download(SOURCE1_URL)
+    source2 = download(SOURCE2_URL)
 
     print("Parsing...")
 
-    ind_entries = parse_m3u(indihome)
-    cig_entries = parse_m3u(cignal)
+    entries1 = parse_m3u(source1)
+    entries2 = parse_m3u(source2)
 
     print("Filtering...")
 
-    ind_movies = filter_indihome(ind_entries)
-    cig_selected = filter_cignal(cig_entries)
+    filtered1 = filter_source1(entries1)
+    filtered2 = filter_source2(entries2)
 
     merged = []
 
-    # ✅ Final filtering
-    for block in ind_movies + cig_selected:
+    for block in filtered1 + filtered2:
         if is_block_allowed(block) and remove_tagalized(block):
             merged.append(block)
 
     print(f"Total channels: {len(merged)}")
-
-    print("Writing file...")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
