@@ -1,7 +1,7 @@
 import requests
 import re
 
-# ✅ RENAMED SOURCES
+# ✅ SOURCES
 SOURCE1_URL = "https://raw.githubusercontent.com/apistech/project/refs/heads/main/IndihomeTV.m3u"
 SOURCE2_URL = "https://raw.githubusercontent.com/TakaMn/TakashiM3u/main/cignal.m3u"
 
@@ -9,7 +9,7 @@ OUTPUT_FILE = "movies.m3u"
 
 HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
-# ✅ Allowed Source 2 channels (Cignal)
+# ✅ Allowed SOURCE2 channels
 SOURCE2_ALLOWED = [
     "tap movies","hbo","hbo hits","hbo family","hbo signature",
     "cinemax","axn","warner tv",
@@ -18,7 +18,7 @@ SOURCE2_ALLOWED = [
     "dreamworks"
 ]
 
-# ✅ TVG-ID mapping
+# ✅ TVG-ID MAP
 TVG_MAP = {
     "hbo": 'tvg-id="HBOAsia.sg@SD"',
     "hbo family": 'tvg-id="HBOFamilyAsia.sg@SD"',
@@ -36,7 +36,7 @@ TVG_MAP = {
     "dreamworks": 'tvg-id="DreamWorksAsia.sg@SD"',
 }
 
-# ✅ Parse M3U into full blocks
+# ✅ Parse M3U as blocks
 def parse_m3u(content):
     lines = content.splitlines()
     entries = []
@@ -63,7 +63,7 @@ def parse_m3u(content):
     return entries
 
 
-# ✅ Source 1 filter (Indihome Movies)
+# ✅ Source1 = Movies only
 def filter_source1(entries):
     result = []
     for block in entries:
@@ -73,7 +73,7 @@ def filter_source1(entries):
     return result
 
 
-# ✅ Source 2 filter (Cignal selected channels)
+# ✅ Source2 = selected channels
 def filter_source2(entries):
     result = []
     for block in entries:
@@ -83,18 +83,22 @@ def filter_source2(entries):
     return result
 
 
-# ✅ Remove unwanted channels
+# ✅ REMOVE UNWANTED (KEY FIX)
 def remove_unwanted(entries):
     filtered = []
 
     for block in entries:
+        full_block_text = "\n".join(block).lower()
         name = block[0].split(",", 1)[-1].lower()
 
         # ❌ remove ONLY DreamWorks (Tagalized)
         if "dreamworks" in name and "tagalized" in name:
             continue
 
-        # ❌ remove ALL Astro
+        # ❌ remove ALL Astro by URL OR name
+        if "astro.com.my" in full_block_text:
+            continue
+
         if "astro" in name:
             continue
 
@@ -103,11 +107,11 @@ def remove_unwanted(entries):
     return filtered
 
 
-# ✅ Inject correct tvg-id (NO duplicates)
+# ✅ Inject tvg-id correctly
 def inject_tvg(extinf):
     name = extinf.split(",", 1)[-1].lower().strip()
 
-    # remove ALL existing tvg-id
+    # remove ALL existing tvg-id (including empty)
     extinf = re.sub(r'\s*tvg-id="[^"]*"', '', extinf)
 
     for key in sorted(TVG_MAP.keys(), key=len, reverse=True):
@@ -122,7 +126,7 @@ def inject_tvg(extinf):
     return extinf
 
 
-# ✅ Clean EXTINF
+# ✅ Clean EXTINF line
 def clean_extinf(line):
     line = re.sub(r'\s*group-title="[^"]+"', '', line, flags=re.IGNORECASE)
     line = re.sub(r'\s+', ' ', line)
@@ -133,13 +137,13 @@ def clean_extinf(line):
 def main():
     print("Downloading sources...")
 
-    source1 = requests.get(SOURCE1_URL, timeout=30).text
-    source2 = requests.get(SOURCE2_URL, timeout=30).text
+    src1 = requests.get(SOURCE1_URL, timeout=30).text
+    src2 = requests.get(SOURCE2_URL, timeout=30).text
 
     print("Parsing...")
 
-    src1_entries = parse_m3u(source1)
-    src2_entries = parse_m3u(source2)
+    src1_entries = parse_m3u(src1)
+    src2_entries = parse_m3u(src2)
 
     print("Filtering...")
 
@@ -148,11 +152,12 @@ def main():
 
     merged = src1_movies + src2_selected
 
-    # ✅ remove unwanted
+    # ✅ remove unwanted blocks (Astro + Tagalized)
     merged = remove_unwanted(merged)
 
     print(f"Final channels: {len(merged)}")
 
+    # ✅ WRITE OUTPUT
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
 
@@ -165,7 +170,7 @@ def main():
 
                 f.write(line.strip() + "\n")
 
-    print("✅ DONE: movies.m3u generated")
+    print("✅ DONE: movies.m3u generated successfully")
 
 
 if __name__ == "__main__":
