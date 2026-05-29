@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://bit.ly/4a2SXO3,https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/us.xml.gz" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"
+#EXTM3U url-tvg="https://bit.ly/4uIfD1o,https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/us.xml.gz"
 #EXTINF:-1 tvg-id="CelestialClassicMovies.id@SD" tvg-logo="https://www.visionplus.id/images/repository/613/613-LOGO-m.png",CCM
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
