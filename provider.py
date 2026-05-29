@@ -9,7 +9,7 @@ SOURCE4_URL = "https://raw.githubusercontent.com/buhtigd1/PTV/main/output/plutot
 
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U url-tvg="https://bit.ly/4a2SXO3,https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/us.xml.gz" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
+HEADER = '#EXTM3U url-tvg="https://bit.ly/4uIfD1o,https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/us.xml.gz" $BorpasFileFormat="1" $NestedGroupsSeparator="/" refresh="720"'
 
 # ✅ Allowed Source 2 channels
 CIGNAL_ALLOWED = [
