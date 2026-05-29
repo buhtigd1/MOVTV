@@ -190,6 +190,7 @@ def main():
 
                 # ✅ replacements
                 line = line.replace("cg_hitsnow", "HITSNOW.sg@SD")
+                line = line.replace("dreamworks_hd", "DreamWorksChannelAsia.us@SD")
                 line = line.replace("https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch111_170_122")
                 line = line.replace("https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png?fbclid=IwY2xjawGIHF9leHRuA2FlbQIxMAABHaW0_Y0A9XL4w1ZXDSwAZCAxe62ui1Oy3gU5wjykfHsZ0eCjzNxl05M0JQ_aem_NIH5vZtTty4_B8wy5fB2LA", "https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/rockaction-ph.png")
                 line = line.replace("https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png", "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch112_170_122")
