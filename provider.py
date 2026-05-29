@@ -29,13 +29,14 @@ TVG_MAP = {
     "hbo signature": 'tvg-id="HBOSignatureAsia.sg@SD"',
     "cinemax": 'tvg-id="CinemaxAsia.sg@SD"',
     "axn": 'tvg-id="AXNAsia.sg@Singapore"',
-    "warner tv": 'tvg-id=""',
-    "tap movies": 'tvg-id=""',
+    "warner tv": 'tvg-id="WarnerChannel.us@Mexico"',
+    "tap movies": 'tvg-id="TAPMovies.ph@SD"',
     "rock action": 'tvg-id="ROCKAction.sg@SD"',
     "rock entertainment": 'tvg-id="ROCKEntertainment.sg@SD"',
     "hits now": 'tvg-id="HITSNOW.sg@SD"',
     "hits movies": 'tvg-id="HITSMovies.sg@SD"',
     "hits hd": 'tvg-id="HITS.sg@SD"',
+    "dreamworks": 'tvg-id="DreamWorksChannelAsia.us@SD"',
 }
 
 def download(url):
