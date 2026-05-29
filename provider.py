@@ -37,6 +37,7 @@ TVG_MAP = {
     "hits movies": 'tvg-id="HITSMovies.sg@SD"',
     "hits hd": 'tvg-id="HITS.sg@SD"',
     "dreamworks": 'tvg-id="DreamWorksChannelAsia.us@SD"',
+    "wedotv movies": 'tvg-id="64257#34496"',
 }
 
 def download(url):
