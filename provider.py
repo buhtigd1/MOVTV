@@ -207,6 +207,12 @@ def main():
 
                 f.write(line + "\n")
 
+        # ✅ Add Miramax Movies Channel 🇺🇸 manually
+        f.write('#EXTINF:-1 tvg-id="Plex/us#5e20b730f2f8d5003d739db7-661fca34414d94009d1206ec" ')
+        f.write('tvg-logo="https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/miramax.jpg" ,Miramax Movies Channel 🇺🇸\n')
+        f.write('https://linear-798.frequency.stream/dist/tcltv/798/hls/master/playlist.m3u8\n')
+        f.write('https://linear-798.frequency.stream/mt/plex/798/hls/master/playlist_1920x1080.m3u8\n')
+
     print("✅ Done: movies.m3u")
 
 if __name__ == "__main__":
