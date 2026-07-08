@@ -77,13 +77,15 @@ def parse_m3u(content):
 
     return entries
 
-# ✅ Source 1 filter
+# ✅ Source 1 filter (movies + AIRTEL)
 def filter_source1(entries):
     result = []
     for block in entries:
         m = re.search(r'group-title="([^"]+)"', block[0], re.IGNORECASE)
-        if m and "movie" in m.group(1).lower():
-            result.append(block)
+        if m:
+            group = m.group(1).lower()
+            if "movie" in group or "airtel" in group:
+                result.append(block)
     return result
 
 # ✅ Source 2 filter
