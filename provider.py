@@ -9,7 +9,7 @@ SOURCE4_URL = "https://raw.githubusercontent.com/buhtigd1/PTV/main/output/plutot
 
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U x-tvg-url="https://raw.githubusercontent.com/didikc/EPG-5/main/epg.xml,https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz"'
+HEADER = '#EXTM3U x-tvg-url="https://raw.githubusercontent.com/didikc/EPG/main/epg.xml,https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz"'
 
 # ✅ Allowed Source 2 channels
 CIGNAL_ALLOWED = [
