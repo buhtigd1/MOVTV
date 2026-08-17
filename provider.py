@@ -83,13 +83,6 @@ def is_block_allowed(block):
         return False
     return True
 
-# ✅ Remove DreamWorks Tagalized
-def remove_tagalized(block):
-    name = block[0].split(",", 1)[-1].lower()
-    if "dreamworks" in name and any(x in name for x in ["tagalized", "tagalog", "tag dub"]):
-        return False
-    return True
-
 # ✅ Inject tvg-id
 def inject_tvg(extinf):
     name = extinf.split(",", 1)[-1].lower().strip()
@@ -127,7 +120,7 @@ def main():
 
     merged = []
     for block in filtered1 + filtered3 + filtered4:
-        if is_block_allowed(block) and remove_tagalized(block):
+        if is_block_allowed(block):
             merged.append(block)
 
     print(f"Total channels: {len(merged)}")
