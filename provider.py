@@ -149,7 +149,7 @@ def main():
         f.write('#KODIPROP:inputstream.adaptive.license_key=000000000000000000000000006d340a:efee11d60dd6a2afb6865fc141e1c4a0\n')
         f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(m4)/manifest.mpd\n')
         f.write('#EXTINF:-1 tvg-id="4seven.uk@SD" ')
-        f.write('tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/4seven_logo_2018.svg/272px-4seven_logo_2018.svg.png" ,4seven\n')
+        f.write('tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/4seven_logo_2018.svg/330px-4seven_logo_2018.svg.png" ,4seven\n')
         f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
         f.write('#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000034730a:19bfb83e0e0f40f6eef4eccedbfa7bb8\n')
         f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(4s)/manifest.mpd\n')
