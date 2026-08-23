@@ -2,6 +2,30 @@
 #EXTINF:-1 tvg-id="661fca34414d94009d1206ec" tvg-logo="https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/miramax.jpg" ,Miramax Movies Channel
 https://linear-798.frequency.stream/dist/tcltv/798/hls/master/playlist.m3u8
 https://linear-798.frequency.stream/mt/plex/798/hls/master/playlist_1920x1080.m3u8
+#EXTINF:-1 tvg-id="Channel4.uk@UK" tvg-logo="https://www.netplus.ch/media/image/0/square/tv-logo-channel-4.jpg.webp" ,Channel 4
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000063340a:5ce85f1aa5771900b952f0ba58857d7a
+https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(c4)/manifest.mpd
+#EXTINF:-1 tvg-id="Film4.uk@SD" tvg-logo="https://www.netplus.ch/media/image/0/square/tv-logo-film-4.jpg.webp" ,Film4
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000066340a:627bcdc9e9556a74b05c5d311d8d2a61
+https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(f4)/manifest.mpd
+#EXTINF:-1 tvg-id="More4.uk@SD" tvg-logo="https://www.netplus.ch/media/image/0/square/tv-logo-more-4.jpg.webp" ,More4
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=000000000000000000000000006d340a:efee11d60dd6a2afb6865fc141e1c4a0
+https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(m4)/manifest.mpd
+#EXTINF:-1 tvg-id="4seven.uk@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/4seven_logo_2018.svg/272px-4seven_logo_2018.svg.png" ,4seven
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000034730a:19bfb83e0e0f40f6eef4eccedbfa7bb8
+https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(4s)/manifest.mpd
+#EXTINF:-1 tvg-id="E4.uk@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/E4_%28channel%29_logo.svg/250px-E4_%28channel%29_logo.svg.png" ,E4
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000065340a:88a5d26b2dc54896693dea815df7c592
+https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(e4)/manifest.mpd
+#EXTINF:-1 tvg-id="AXNWhite.us@Portugal" tvg-logo="https://i.postimg.cc/fLp6SK8w/ezgif-300b4feb0427483f.png" ,AXN White
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key={"keys":[{"kty":"oct","kid":"t3DVtLtrWU2vmFhFqumqXw","k":"sMtG0tMc8ES8c9tx6YZfbw"},{"kty":"oct","kid":"q_No7DBlMDMtV3H3nfgkwQ","k":"zcUkd_y0IGsEOnE6a_oRmQ"}]}
+https://a164aivottlinear-a.akamaihd.net/OTTB/fra-nitro/live/clients/dash/enc/hlkbg1ngqb/out/v1/86088477f9f646e3ac7230fc23738e8a/cenc.mpd
 #EXTINF:-1 tvg-id="CelestialClassicMovies.id@SD" tvg-logo="https://www.visionplus.id/images/repository/613/613-LOGO-m.png",CCM
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
