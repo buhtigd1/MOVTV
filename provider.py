@@ -128,11 +128,41 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(HEADER + "\n")
 
-        # ✅ Add Miramax Movies Channel manually at the top
+        # ✅ Add Channels manually at the top
         f.write('#EXTINF:-1 tvg-id="661fca34414d94009d1206ec" ')
         f.write('tvg-logo="https://raw.githubusercontent.com/didikc/TV-Logo/main/logos/miramax.jpg" ,Miramax Movies Channel\n')
         f.write('https://linear-798.frequency.stream/dist/tcltv/798/hls/master/playlist.m3u8\n')
         f.write('https://linear-798.frequency.stream/mt/plex/798/hls/master/playlist_1920x1080.m3u8\n')
+        f.write('#EXTINF:-1 tvg-id="Channel4.uk@UK" ')
+        f.write('tvg-logo="https://www.netplus.ch/media/image/0/square/tv-logo-channel-4.jpg.webp" ,Channel 4\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000063340a:5ce85f1aa5771900b952f0ba58857d7a\n')
+        f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(c4)/manifest.mpd\n')
+        f.write('#EXTINF:-1 tvg-id="Film4.uk@SD" ')
+        f.write('tvg-logo="https://www.netplus.ch/media/image/0/square/tv-logo-film-4.jpg.webp" ,Film4\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000066340a:627bcdc9e9556a74b05c5d311d8d2a61\n')
+        f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(f4)/manifest.mpd\n')
+        f.write('#EXTINF:-1 tvg-id="More4.uk@SD" ')
+        f.write('tvg-logo="https://www.netplus.ch/media/image/0/square/tv-logo-more-4.jpg.webp" ,More4\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_key=000000000000000000000000006d340a:efee11d60dd6a2afb6865fc141e1c4a0\n')
+        f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(m4)/manifest.mpd\n')
+        f.write('#EXTINF:-1 tvg-id="4seven.uk@SD" ')
+        f.write('tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/4seven_logo_2018.svg/272px-4seven_logo_2018.svg.png" ,4seven\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000034730a:19bfb83e0e0f40f6eef4eccedbfa7bb8\n')
+        f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(4s)/manifest.mpd\n')
+        f.write('#EXTINF:-1 tvg-id="E4.uk@SD" ')
+        f.write('tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/E4_%28channel%29_logo.svg/250px-E4_%28channel%29_logo.svg.png" ,E4\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_key=0000000000000000000000000065340a:88a5d26b2dc54896693dea815df7c592\n')
+        f.write('https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(e4)/manifest.mpd\n')
+        f.write('#EXTINF:-1 tvg-id="AXNWhite.us@Portugal" ')
+        f.write('tvg-logo="https://i.postimg.cc/fLp6SK8w/ezgif-300b4feb0427483f.png" ,AXN White\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
+        f.write('#KODIPROP:inputstream.adaptive.license_key={"keys":[{"kty":"oct","kid":"t3DVtLtrWU2vmFhFqumqXw","k":"sMtG0tMc8ES8c9tx6YZfbw"},{"kty":"oct","kid":"q_No7DBlMDMtV3H3nfgkwQ","k":"zcUkd_y0IGsEOnE6a_oRmQ"}]}\n')
+        f.write('https://a164aivottlinear-a.akamaihd.net/OTTB/fra-nitro/live/clients/dash/enc/hlkbg1ngqb/out/v1/86088477f9f646e3ac7230fc23738e8a/cenc.mpd\n')
 
         # ✅ Write the rest of the merged channels
         for block in merged:
