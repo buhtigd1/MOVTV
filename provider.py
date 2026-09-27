@@ -163,13 +163,13 @@ def main():
         f.write('#KODIPROP:inputstream.adaptive.license_type=clearkey\n')
         f.write('#KODIPROP:inputstream.adaptive.license_key={"keys":[{"kty":"oct","kid":"t3DVtLtrWU2vmFhFqumqXw","k":"sMtG0tMc8ES8c9tx6YZfbw"},{"kty":"oct","kid":"q_No7DBlMDMtV3H3nfgkwQ","k":"zcUkd_y0IGsEOnE6a_oRmQ"}]}\n')
         f.write('https://a164aivottlinear-a.akamaihd.net/OTTB/fra-nitro/live/clients/dash/enc/hlkbg1ngqb/out/v1/86088477f9f646e3ac7230fc23738e8a/cenc.mpd\n')
-        f.write('#EXTINF:-1 tvg-id="AXNWhite.us@Portugal" ')
+        f.write('#EXTINF:-1 tvg-id="" ')
+        f.write('tvg-logo="" ,TVE ES\n')
         f.write('#KODIPROP:inputstreamaddon=inputstream.adaptive\n')
         f.write('#KODIPROP:inputstream.adaptive.manifest_type=dash\n')
         f.write('#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey\n')
         f.write('#KODIPROP:inputstream.adaptive.license_key=745cd6ec34a58f2f7ac2af35dc3da6d2:ae008f1e47e6567fe4201a6ff8f1ae54\n')
-        f.write('https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/c7di7zkdor/out/v1/f7d5b356e048494a8325563e8916d50b/cenc.mpd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
-\n')
+        f.write('https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/c7di7zkdor/out/v1/f7d5b356e048494a8325563e8916d50b/cenc.mpd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36\n')
        
         # ✅ Write the rest of the merged channels
         for block in merged:
