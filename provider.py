@@ -8,7 +8,7 @@ SOURCE4_URL = "https://raw.githubusercontent.com/buhtigd1/PTV/main/output/plutot
 
 OUTPUT_FILE = "movies.m3u"
 
-HEADER = '#EXTM3U x-tvg-url="https://bit.ly/3THSiiN,https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz"'
+HEADER = '#EXTM3U x-tvg-url="https://bit.ly/4sNNOoc,https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz"'
 
 # ✅ TVG mapping (only keep what’s relevant)
 TVG_MAP = {
